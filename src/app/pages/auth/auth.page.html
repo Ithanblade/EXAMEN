@@ -1,0 +1,31 @@
+
+<ion-content class="ion-padding auth-content">
+  <div class="auth-card ion-text-center">
+    <h2>Bienvenido</h2>
+    <p>Inicia sesión o regístrate para continuar</p>
+
+    <ion-item>
+      <ion-label position="stacked">Correo</ion-label>
+      <ion-input [(ngModel)]="email" type="email" placeholder="ejemplo@correo.com" autocapitalize="none" autocomplete="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input [(ngModel)]="password" type="password" placeholder="••••••••" autocomplete="current-password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Nombre de usuario</ion-label>
+      <ion-input [(ngModel)]="username" type="text" placeholder="Tu nombre en la app" autocapitalize="none" autocomplete="username"></ion-input>
+    </ion-item>
+    <br>
+    <ion-button expand="block" class="login-btn" color="primary"  (click)="login()">Iniciar Sesión</ion-button>
+    <br>
+    <br>
+    <ion-button expand="block" class="register-btn" fill="outline" color="primary" (click)="register()">Registrarse</ion-button>
+
+    <ion-text color="danger" *ngIf="error">
+      <p class="error-message">{{ error }}</p>
+    </ion-text>
+  </div>
+</ion-content>

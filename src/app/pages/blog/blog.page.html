@@ -1,0 +1,93 @@
+<ion-content class="ion-padding blog-create-content">
+
+  <!-- Header con avatar + texto + botones -->
+  <div class="profile-header">
+    <ion-avatar *ngIf="profilePhotoUrl" class="profile-photo">
+      <img [src]="profilePhotoUrl" alt="Perfil" />
+    </ion-avatar>
+    <div class="profile-info">
+      <h2 class="welcome-text">Bienvenido, {{ userName }}</h2>
+      <div class="btn-group">
+        <ion-button fill="outline" size="small" (click)="changeProfilePhoto()">Cambiar foto</ion-button>
+        <ion-button fill="outline" size="small" color="danger" (click)="logout()">Cerrar sesión</ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje -->
+  <ion-textarea
+    [(ngModel)]="post.message"
+    placeholder="Escribe tu mensaje..."
+    auto-grow
+    class="message-textarea"
+  ></ion-textarea>
+
+  <!-- Buscar personaje -->
+  <ion-item class="search-character-item" lines="full">
+    <ion-input [(ngModel)]="characterSearch" placeholder="Buscar personaje"></ion-input>
+    <ion-button size="small" (click)="searchCharacters()" [disabled]="characterLoading">Buscar</ion-button>
+  </ion-item>
+
+  <ion-list *ngIf="characters.length > 0" class="characters-list">
+    <ion-item *ngFor="let char of characters" (click)="selectCharacter(char)" button detail>
+      <ion-avatar slot="start" class="char-avatar">
+        <img [src]="char.image" alt="Avatar" />
+      </ion-avatar>
+      <ion-label>
+        <h3>{{ char.name }}</h3>
+        <p>{{ char.species }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="action-buttons">
+    <ion-button expand="block" color="tertiary" (click)="addGPS()">
+      <ion-icon slot="start" name="location-outline"></ion-icon>
+      Añadir ubicación
+    </ion-button>
+    <ion-button expand="block" color="medium" (click)="addPhoto()">
+      <ion-icon slot="start" name="camera-outline"></ion-icon>
+      Añadir foto
+    </ion-button>
+    <ion-button expand="block" color="success" (click)="publish()">
+      <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+      Publicar
+    </ion-button>
+    <ion-button expand="block" fill="outline" (click)="goToBlogFeed()">
+      <ion-icon slot="start" name="book-outline"></ion-icon>
+      Ver blogs
+    </ion-button>
+  </div>
+
+  <div *ngIf="showPreview" class="preview ion-margin-top">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Vista previa</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ post.message }}</p>
+
+        <ion-item *ngIf="post.character" lines="none">
+          <ion-avatar slot="start" class="char-avatar">
+            <img [src]="post.character.image" />
+          </ion-avatar>
+          <ion-label>
+            <h3>{{ post.character.name }}</h3>
+            <p>{{ post.character.species }}</p>
+          </ion-label>
+        </ion-item>
+
+        <div *ngIf="post.gpsUrl" class="ion-margin-top gps-info">
+          <p><a [href]="post.gpsUrl" target="_blank" rel="noopener noreferrer">Ver ubicación en Google Maps</a></p>
+          <p>Latitud: {{ post.lat }}</p>
+          <p>Longitud: {{ post.lon }}</p>
+        </div>
+
+        <div *ngIf="post.photoUrl" class="ion-margin-top">
+          <img [src]="post.photoUrl" alt="Foto del blog" class="post-photo" />
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

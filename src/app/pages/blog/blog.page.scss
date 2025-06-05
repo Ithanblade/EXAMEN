@@ -1,0 +1,127 @@
+.blog-create-content {
+  --background: #f9f9f9;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+
+  .profile-photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--ion-color-primary);
+  }
+
+  .profile-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .welcome-text {
+      margin: 0;
+      font-weight: 600;
+      color: var(--ion-color-primary);
+      font-size: 1.4rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+
+      ion-button {
+        font-size: 0.85rem;
+        padding: 0 10px;
+      }
+    }
+  }
+}
+
+.message-textarea {
+  width: 100%;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.search-character-item {
+  margin-bottom: 15px;
+
+  ion-input {
+    font-size: 1rem;
+  }
+
+  ion-button {
+    --padding-start: 12px;
+    --padding-end: 12px;
+  }
+}
+
+.characters-list ion-item {
+  --background: #fff;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  cursor: pointer;
+
+  .char-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  ion-label h3 {
+    margin: 0;
+    font-weight: 600;
+  }
+  ion-label p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--ion-color-medium);
+  }
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.action-buttons ion-button {
+  --border-radius: 10px;
+  font-weight: 600;
+}
+
+.preview ion-card {
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.preview ion-card-content p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.gps-info p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: var(--ion-color-dark);
+}
+
+.post-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 12px;
+  object-fit: cover;
+}

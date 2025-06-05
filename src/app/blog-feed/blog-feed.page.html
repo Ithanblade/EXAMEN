@@ -1,0 +1,43 @@
+<br>
+<ion-button slot="end" (click)="goToCreate()">Crear Nuevo</ion-button>
+<br>
+
+<ion-content *ngIf="!loading; else loadingTpl">
+<ion-list *ngIf="posts.length > 0; else noPostsTpl">
+  <ng-container *ngFor="let post of posts; let last = last">
+    <h2><b>Autor: {{ post.profiles?.username || post.user_id }}</b></h2>
+    <ion-item detail lines="none">
+      <ion-avatar slot="start" *ngIf="post.character_image">
+        <img [src]="post.character_image" alt="Character" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ post.character_name || 'Sin personaje' }}</h2>
+        <p>{{ post.message }}</p>
+        <p *ngIf="post.latitude && post.longitude" style="font-size: 0.8em; color: gray;">
+          Lat: {{ post.latitude }}, Lon: {{ post.longitude }}
+        </p>
+        <p *ngIf="post.photo_url">
+          <img [src]="post.photo_url" alt="Foto" style="max-width: 100%; border-radius: 8px; margin-top: 5px;" />
+        </p>
+        <p *ngIf="post.gps_url"></p>
+      </ion-label>
+    </ion-item>
+
+    <div *ngIf="!last" class="separator-line"></div>
+  </ng-container>
+</ion-list>
+
+
+</ion-content>
+
+<ng-template #loadingTpl>
+  <ion-content class="ion-padding">
+    <p>Cargando posts...</p>
+  </ion-content>
+</ng-template>
+
+<ng-template #noPostsTpl>
+  <ion-content class="ion-padding">
+    <p>No hay publicaciones todavía.</p>
+  </ion-content>
+</ng-template>
